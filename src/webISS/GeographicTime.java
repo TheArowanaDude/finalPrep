@@ -44,7 +44,7 @@ public class GeographicTime {
   public String computeTimeOfFlyOver(double latitude, double longitude) throws Exception {
     try {
       return convertTimeStampToTimeAtLatLon(
-        ISSWebService.fetchIssFlyOverData(latitude, longitude),
+              issWebService.fetchIssFlyOverData(latitude, longitude),
         latitude, longitude);
 
     } catch (RuntimeException | IOException ex) {
