@@ -11,10 +11,11 @@ import net.iakovlev.timeshape.TimeZoneEngine;
 public class GeographicTime {
   private ISSWebService issWebService;
 
-  public GeographicTime(OpenNotifyWebService webService) {
+  public GeographicTime(ISSWebService webService) {
     issWebService = webService;
 
   }
+
 
 
   static String convertTimestampToUTCTime(long timestamp) {

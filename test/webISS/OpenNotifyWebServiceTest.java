@@ -100,7 +100,10 @@ public class OpenNotifyWebServiceTest {
             "}";
 
     OpenNotifyWebService webService = spy(OpenNotifyWebService.class);
-    doReturn(1570072243L)
+    doReturn(response).when(webService).fetchJSON(29.72167, -95.343631);
+    webService.fetchIssFlyOverData(29.72167, -95.343631);
+    verify(webService).fetchJSON(29.72167, -95.343631);
+    verify(webService).parseJSON(response);
   }
 
 }

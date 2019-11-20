@@ -46,8 +46,5 @@ public class OpenNotifyWebService implements ISSWebService{
     return Long.parseLong(
             parseJSON(
                     fetchJSON(latitude,longitude)));
-
-
-
   }
 }
