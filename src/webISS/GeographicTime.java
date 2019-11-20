@@ -11,15 +11,14 @@ import webISS.OpenNotifyWebService.*;
 
 public class GeographicTime {
   private ISSWebService issWebService;
+  private ISSWebService theService;
 
-  public GeographicTime(double latitude, double longitude) throws Exception {
-    System.out.println(computeTimeOfFlyOver(latitude, longitude));
-  }
-
-  public GeographicTime(ISSWebService mockWebService) {
-    mockWebService = issWebService;
+  public GeographicTime(ISSWebService webService) {
+    issWebService = webService;
 
   }
+
+
 
   static String convertTimestampToUTCTime(long timestamp) {
     SimpleDateFormat dataFormat = new SimpleDateFormat("y-MM-dd h:mm a");
@@ -36,13 +35,13 @@ public class GeographicTime {
     Optional<ZoneId> zoneID = timeZoneLocator.query(latitude, longitude);
     TimeZone timeZoneToConvertTo = TimeZone.getTimeZone(zoneID.get());
     dataFormat.setTimeZone(timeZoneToConvertTo);
-
     return dataFormat.format(new Date(timestamp * 1000L));
   }
 
 
   public String computeTimeOfFlyOver(double latitude, double longitude) throws Exception {
     try {
+
       return convertTimeStampToTimeAtLatLon(
               issWebService.fetchIssFlyOverData(latitude, longitude),
         latitude, longitude);

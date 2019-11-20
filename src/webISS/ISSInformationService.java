@@ -8,7 +8,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 public class ISSInformationService implements ISSWebService{
-  public long fetchIssFlyOverData(double latitude, double longitude) throws IOException {
+  public String fetchJSON(double latitude, double longitude) throws IOException{
     String requestURL = "http://api.open-notify.org/iss-pass.json?lat=" + latitude + "&lon=" + longitude + "&n=1";
     URL request = new URL(requestURL);
     HttpURLConnection connection = (HttpURLConnection) request.openConnection();
@@ -21,8 +21,19 @@ public class ISSInformationService implements ISSWebService{
       response.append(inputLine);
     }
 
+    return response.toString();
+  }
+
+
+
+  public long fetchIssFlyOverData(double latitude, double longitude) throws IOException {
+
+    System.out.println("does this exec");
+
     return Long.parseLong(
-            OpenNotifyWebService.parseJSON(response.toString()));
+            OpenNotifyWebService.parseJSON(
+                    fetchJSON(latitude,longitude)));
+
 
 
   }

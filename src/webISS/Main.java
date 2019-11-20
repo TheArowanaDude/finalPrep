@@ -2,9 +2,11 @@ package webISS;
 
 public class Main {
   public static void main(String[] args) throws Exception {
-    double latitude = Double.parseDouble(args[0]);
-    double longitude = Double.parseDouble(args[1]);
-    GeographicTime geographicTime = new GeographicTime(latitude, longitude);
+    double latitude = 229.72167;
+    double longitude = -95.343631;
 
+    ISSWebService service = new ISSInformationService();
+    GeographicTime geographicTime = new GeographicTime(service);
+    System.out.println(geographicTime.computeTimeOfFlyOver(latitude, longitude));
   }
 }
