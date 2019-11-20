@@ -7,17 +7,14 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.TimeZone;
 import net.iakovlev.timeshape.TimeZoneEngine;
-import webISS.OpenNotifyWebService.*;
 
 public class GeographicTime {
   private ISSWebService issWebService;
-  private ISSWebService theService;
 
-  public GeographicTime(ISSWebService webService) {
+  public GeographicTime(OpenNotifyWebService webService) {
     issWebService = webService;
 
   }
-
 
 
   static String convertTimestampToUTCTime(long timestamp) {
